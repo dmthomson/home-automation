@@ -9,7 +9,7 @@ All response will have the form
     "data": "Mixed type holding the content of the response",
     "mesage":
 }
-'''
+```
 
 Subsequent response definitions will only detail the expect value of the `data file`
 
@@ -26,31 +26,32 @@ Subsequent response definitions will only detail the expect value of the `data f
  ```json
  [
      {
-         "indentifier": "floor-lamp",
+         "identifier": "floor-lamp",
          "name": "Floor Lamp",
          "device_type": "switch",
          "controller_gateway": "192.168.2.33"
      },
      {
-         "indentifier": "samsung-tv",
-         "name": "Living Room TM",
+         "identifier": "samsung-tv",
+         "name": "Living Room TV",
          "device_type": "tv",
          "controller_gateway": "192.168.2.32"
      }
  ]
+ ```
 
 ### Registering a new device
 
 **Defintion**
 
-`POST /devices`
+`PUT /devices`
 
 **Arguments**
 
 - `"identifier":string` a globally unique identifier for this device
 - `"name":string` a friendly name for this device
-- '"device_type":string` the type of device as understodd by the client
-- '"controller_gateway":string` the IP address of the device's controller
+- `"device_type":string` the type of device as understodd by the client
+- `"controller_gateway":string` the IP address of the device's controller
 
 If a device with the given identifier already exists, the existing device will be overwritten.
 
@@ -59,13 +60,12 @@ If a device with the given identifier already exists, the existing device will b
 - `201 Create` on success
 
 ```json
-    {
-         "indentifier": "floor-lamp",
-         "name": "Floor Lamp",
-         "device_type": "switch",
-         "controller_gateway": "192.168.2.33"
-    },
-
+{
+        "identifier": "floor-lamp",
+        "name": "Floor Lamp",
+        "device_type": "switch",
+        "controller_gateway": "192.168.2.33"
+}
 ```
 
 ## Lookup device details
@@ -79,7 +79,7 @@ If a device with the given identifier already exists, the existing device will b
 
 ```json
 {
-        "indentifier": "floor-lamp",
+        "identifier": "floor-lamp",
         "name": "Floor Lamp",
         "device_type": "switch",
         "controller_gateway": "192.168.2.33"
@@ -95,4 +95,4 @@ If a device with the given identifier already exists, the existing device will b
 **Response**
 
 - `404 Not Found` if the device does not exist
-- `204` No Content
+- `204 No Content` on success
